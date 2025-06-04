@@ -18,7 +18,7 @@ resource "spacelift_stack" "managed" {
   administrative = true
   repository   = "intermediate-repo"
   branch       = "main"
-  project_root = "Drift-Detection-Stack"
+  project_root = "intermediate-repo-main/Drift-Detection-Stack"
   space_id    = spacelift_space.intermediate-repo.id
   depends_on  = [data.spacelift_current_stack.this]
 }
@@ -36,7 +36,7 @@ resource "spacelift_stack" "Stack-Dependencies" {
   description = "Your first stack managed by Terraform"
   repository   = "intermediate-repo"
   branch       = "main"
-  project_root = "Stack-Dependencies"
+  project_root = "intermediate-repo-main/Stack-Dependencies"
   space_id    = spacelift_space.intermediate-repo.id
   depends_on = [spacelift_space.intermediate-repo]
 }
@@ -52,7 +52,7 @@ resource "spacelift_stack" "private_worker" {
   administrative    = true
   repository   = "intermediate-repo"
   branch       = "main"
-  project_root = "Private-worker"
+  project_root = "intermediate-repo-main/Private-worker"
   depends_on = [spacelift_space.intermediate-repo]
 }
 
