@@ -120,7 +120,7 @@ resource "aws_security_group_rule" "ingress_rule_1" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = ["3.248.70.24/35"]
+  cidr_blocks       = ["3.248.70.24/25"]
   description       = "Allow ingress from Spacelift IP 3.248.70.24"
   security_group_id = aws_security_group.main.id
 }
