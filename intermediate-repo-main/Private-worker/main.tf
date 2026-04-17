@@ -155,7 +155,7 @@ resource "aws_sqs_queue_policy" "example" {
       {
         Sid      = "MigrationApiSQS"
         Effect   = "Allow"
-        Action   = ["sqs:ReceiveMessage", "sqs:DeleteMessage"]
+        Action   = ["sqs:DeleteMessage"]
         Resource = aws_sqs_queue.example.arn
       }
     ]
