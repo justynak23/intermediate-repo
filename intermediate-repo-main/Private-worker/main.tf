@@ -142,3 +142,22 @@ resource "aws_security_group_rule" "ingress_rule_3" {
   description       = "Allow ingress from Spacelift IP 52.49.218.181"
   security_group_id = aws_security_group.main.id
 }
+
+resource "aws_sqs_queue" "example" {
+  name = "example-queue-${random_string.suffix.id}"
+}
+
+resource "aws_sqs_queue_policy" "example" {
+  queue_url = aws_sqs_queue.example.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid      = "MigrationApiSQS"
+        Effect   = "Allow"
+        Action   = ["sqs:ReceiveMessage", "sqs:DeleteMessage"]
+        Resource = aws_sqs_queue.example.arn
+      }
+    ]
+  })
+}
